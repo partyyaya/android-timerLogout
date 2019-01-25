@@ -47,7 +47,7 @@ public static void setLogoutActivity(Context context){
 }
 ```
 #### 其他頁面設定
-- restartTimer => 使用於按鈕觸發時重新計算間(也可放在想要觸發的地方)
+- restartTimer => 使用於按鈕觸發時重新計算間(也可放在想要觸發的地方,ex:OnTouchListener)
 - setLogoutActivity(this) => 使用於當下頁面逾時登出
 
 ```java
