@@ -67,5 +67,41 @@ public void onClick(View v) {
 }
 ```
 
+另提供 SystemUtil:
+```java
+/**
+ * 顯示登出確認對話框
+ */
+public static void showTimerLogoutDialog(final Context from){
+  //Create a builder
+  AlertDialog.Builder builder = new AlertDialog.Builder(from);
+  builder.setTitle("連線已逾時");
+  builder.setMessage("連線已逾時，請重新登入");
+  builder.setNegativeButton("確定",new DialogInterface.OnClickListener() {
+        public void onClick(DialogInterface dialog, int which) {
+          logout(from);
+        }
+      }
+  );
+  //Create the dialog
+  AlertDialog ad = builder.create();
+  //show
+  ad.show();
+  //resize alert window
+  ad.getWindow().setLayout(600, 350);
+}
+
+/**
+ * 登出
+ */
+public static void logout(Context from) {
+  System.gc();
+  Intent intent = new Intent();
+  intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);//清除所有activity歷史紀錄
+  intent.setClass(from, LoginActivity.class);
+  from.startActivity(intent);
+}
+```
+
 
 
