@@ -4,7 +4,7 @@
 
 #### 建立功能
 - 1.在登入後主頁面增加 CountDownTimer
-```
+```java
 private static CountDownTimer timer;
 private static Context logoutContext;
 
@@ -13,7 +13,7 @@ protected void onCreate(Bundle savedInstanceState) {
   super.onCreate(savedInstanceState);
   setContentView(R.layout.activity_main);
   
-  restartTimer();
+  restartTimer();//開始計時(也可放入登入按鈕onclick事件)
   setLogoutActivity(this);//不能用getApplicationContext()
 }
 
@@ -30,6 +30,7 @@ public static void restartTimer(){
       }
     }.start();
   }else{
+    //重新計時
     timer.cancel();
     timer.start();
   }
@@ -43,6 +44,26 @@ public static void finishLogout(){
 //設定計時完要登出的當下頁面
 public static void setLogoutActivity(Context context){
   logoutContext = context;
+}
+```
+#### 其他頁面設定
+- restartTimer => 使用於按鈕觸發時重新計算間(也可放在想要觸發的地方)
+- setLogoutActivity(this) => 使用於當下頁面逾時登出
+
+```java
+@Override
+protected void onCreate(Bundle savedInstanceState) {
+  super.onCreate(savedInstanceState);
+  setContentView(R.layout.activity_main);
+  
+  setLogoutActivity(this);//基本上放開頭即可
+}
+
+/**
+ * 設定按鈕按下動作
+ */
+public void onClick(View v) {
+  restartTimer();
 }
 ```
 
