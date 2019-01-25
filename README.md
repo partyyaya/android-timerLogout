@@ -1,2 +1,4 @@
-# timerLogout
-use timer to logout
+## 逾時登出(use timer to logout)
+- 此功能可用於多頁與逾時管理
+
+
